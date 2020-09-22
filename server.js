@@ -1,7 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3000
+// Importing libraries
+const express = require('express');
+const app = express();
+const expbs = require('express-handlebars');
+const path = require('path');
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// Importing files
+const routes = require('./routes/handlers');
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// Sending static files with Express 
+app.use(express.static('public'));
