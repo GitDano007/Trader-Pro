@@ -73,3 +73,53 @@
     border: none;
     cursor: pointer;
 }
+
+.container {
+    display: flex;
+    height: 80vh;
+}
+
+.left {
+    width: 50%;
+    padding-left: 100px;
+}
+
+.left h1 {
+    font-size: 3.8rem;
+    color: #575988;
+}
+
+.left p{
+    margin: 25px 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #4b4a48;
+}
+
+.newsletter {
+    margin-top: 85%;
+}
+
+form {
+    overflow: hidden;
+}
+
+input {
+    float: left;
+    padding: 11px 11px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.5rem;
+    outline: 0;
+}
+
+[type = email] {
+    margin-bottom: 15px;
+    border: 1px solid #575988;
+}
+
+[type = submit ] {
+    background-color: #575988;
+    color: white;
+    border: 1px solid #575988;
+}
