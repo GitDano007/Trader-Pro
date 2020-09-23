@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f7f6f4;
+}
+
+.nav-bar {
+    display: flex;
+    height: 20vh;
+}
+
+.logo {
+    width: 25%;
+    height: 100px;
+}
+
+.logo h1 {
+    line-height: 100px;
+    padding-left: 50px;
+    color: #575988;
+    cursor: pointer;
+}
+
+.menu-bar {
+    width: 50%;
+    height: 100px;
+}
+
+.menu-bar ul {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding : 0 53px;
+    cursor: pointer;
+}
+
+.menu-bar li {
+    list-style: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #575988;
+}
+
+.login {
+    width: 25%;
+    height: 100px;
+    line-height: 100px;
+    padding-left: 100px;
+}
+
+.login .sign-in {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 11px 17px;
+    color: #4a2469;
+    border: none;
+    cursor: pointer;
+}
+
+.login .sign-up {
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #575988;
+    border-radius: 4px;
+    padding: 11px 17px;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+}
