@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     background-color: #f7f6f4;
+    font-family: 'Poppins', sans-serif;
 }
 
 .nav-bar {
@@ -73,7 +74,81 @@
     border: none;
     cursor: pointer;
 }
-
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
+  .tcontainer{
+    width: 100%;
+    overflow: hidden;
+    
+  }
+  .ticker-wrap {
+    width: 100%;
+    padding-left: 100%;
+    background-color: #eee;
+    height:20%;
+  }
+  .ticker-move {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 110s;
+  }
+  .ticker-move:hover{
+    animation-play-state: paused;
+  }
+  .ticker-item{
+    display: inline-block;
+    padding: 0 1rem;
+  }
+  .example1 {
+    height: 50px;  
+    overflow: hidden;
+    position: relative;
+   }
+   .example1 h3 {
+    font-size: 3em;
+    color: blue;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);    
+    transform:translateX(100%);
+    /* Apply animation to this element */  
+    -moz-animation: example1 15s linear infinite;
+    -webkit-animation: example1 15s linear infinite;
+    animation: example1 15s linear infinite;
+   }
+   /* Move it (define the animation) */
+   @-moz-keyframes example1 {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+   }
+   @-webkit-keyframes example1 {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+   }
+   @keyframes example1 {
+    0%   { 
+    -moz-transform: translateX(100%); /* Firefox bug fix */
+    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    transform: translateX(100%);       
+    }
+    100% { 
+    -moz-transform: translateX(-100%); /* Firefox bug fix */
+    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    transform: translateX(-100%); 
+    }
+   }
 .container {
     display: flex;
     height: 80vh;
@@ -122,4 +197,50 @@ input {
     background-color: #575988;
     color: white;
     border: 1px solid #575988;
+}
+
+.news {
+    font-size: 13px!important;
+    color: black!important;
+}
+
+.right{
+    width: 50%;
+    margin: 40px;
+    position: relative;
+}
+
+.right img {
+    width: 400px;
+    margin-left: 75px;
+}
+
+.right .line {
+    position: absolute;
+    width: 2px;
+    height: 85px;
+    background-color: #57598840;
+    right: 7px;
+    top: 240px;
+}
+
+.text {
+    position: absolute;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    right: -4px;
+    top: 80px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #575988;
+}
+
+.gif {
+    transition: 1s 0.4s ease-in-out;
+    outline: none;
+    border: none;
+    border-radius: 5%;
 }
