@@ -17,7 +17,6 @@ request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_f37fe7e4cbe74f
     if (err) {return console.log(err);}
     console.log(body);
     if (res.statusCode === 200){
-       // console(body);
        return body
     }
 }); 
