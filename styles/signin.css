@@ -269,16 +269,16 @@ form.register-form {
     transform: translateX(-800px);
   }
   
-  .container.register-mode .signin-signup {
+  .container.register-mode .login-register {
     left: 25%;
   }
   
-  .container.register-mode form.sign-up-form {
+  .container.register-mode form.register-form {
     opacity: 1;
     z-index: 2;
   }
   
-  .containeregister-mode form.sign-in-form {
+  .container.register-mode form.login-form {
     opacity: 0;
     z-index: 1;
   }
