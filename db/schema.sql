@@ -1,4 +1,5 @@
 DROP DATABASE IF EXISTS trading_accountDB;
+
 CREATE DATABASE trading_accountDB;
 
 USE trading_accountDB;
