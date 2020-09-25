@@ -83,6 +83,7 @@ form.register-form {
     display: grid;
     grid-template-columns: 15% 85%;
     padding: 0 .4rem;
+
 }
 
 .input-field i {
