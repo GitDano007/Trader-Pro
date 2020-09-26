@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const request = require('request');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 
 // API key pk_f37fe7e4cbe74f4a85a02621ccabbc00
@@ -17,7 +17,7 @@ function call_api(finishedAPI) {
         if (err) { return console.log(err); }
         console.log(body);
         if (res.statusCode === 200) {
-            return body
+            finishedAPI(body);
         }
     });
 }
@@ -27,21 +27,22 @@ app.set('view engine', 'handlebars');
 
 // Set handlebar routes
 app.get('/', function (req, res) {
-    const_api(function (doneAPI) {
-        res.render('home');
-        stock: doneAPI
+    call_api(function (doneAPI) {
+        res.render('home', {
+            stock: doneAPI
+        });
     });
+
+
+    // create market page route
+    app.get('/market.html', function (req, res) {
+        res.render('market');
+    })
+
+
+    // Set static folder
+    app.use(express.static(path.join(__dirname, 'public')));
+
+
+    app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
 });
-
-
-// create market page route
-app.get('/market.html', function (req, res) {
-    res.render('market');
-})
-
-
-// Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-app.listen(PORT, () => console.log('Server Listening on port ' + PORT));
