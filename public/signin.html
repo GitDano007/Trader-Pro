@@ -4,120 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trader-Pro</title>
-    <link rel="stylesheet" href="/styles/signin.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
-</head>
+    <title>Sign-in & Create Account</title>
+    <link rel="stylesheet" href="/styles/login.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
-<title>Login & Register</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="forms-container">
-            <div class="login-register">
-                <form action="#" class="login-form">
-                    <h2 class="title">Trader-Pro</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text">
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
-                    </div>
-                    <input type="submit" value="Login" class="btn solid" />
-                    <p class="social-text">Or Login with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-                <form action="#" class="register-form">
-                    <h2 class="title">Register</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Full Name" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Comfirm Password" />
-                    </div>
-                    <input type="submit" class="btn" value="register" />
-                    <p class="social-text">Or Register with social platforms</p>
-                    <div class="social-media">
-                        <a href="https://www.facebook.com/" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com/" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://www.google.com/" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/feed/" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-            </div>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </form>
         </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" />
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>New here ?</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                        ex ratione. Aliquid!
-                    </p>
-                    <button class="btn transparent" id="register-btn">
-                        Register
-                    </button>
+                <input type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
                 </div>
-                <img src="/img/log.svg" class="image" alt="" />
-            </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>One of us ?</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                        laboriosam ad deleniti.
-                    </p>
-                    <button class="btn transparent" id="login-btn">
-                      Login
-                    </button>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
                 </div>
-                <img src="/img/register.svg" class="image" alt="" />
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="/app.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

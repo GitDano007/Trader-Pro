@@ -47,14 +47,14 @@
     color: #575988;
 }
 
-.login {
+.account{
     width: 25%;
     height: 100px;
     line-height: 100px;
     padding-left: 100px;
 }
 
-.login .sign-in {
+.sign-up-btn .sign-in-btn {
     font-size: 12px;
     font-weight: bold;
     border-radius: 4px;
@@ -64,7 +64,7 @@
     cursor: pointer;
 }
 
-.login .sign-up {
+.sign-in-btn .sign-up-btn {
     font-size: 12px;
     font-weight: bold;
     background-color: #575988;
