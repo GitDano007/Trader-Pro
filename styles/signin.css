@@ -37,7 +37,7 @@ body, input {
     left: 0;
 }
 
-.signin-signup {
+.login-register {
     position: absolute;
     top: 50%;
     left: 75%;
@@ -58,11 +58,11 @@ form {
     grid-row: 1 / 2;
 }
 
-form.sign-in-form {
+form.login-form {
     z-index: 2;
 }
 
-form.sign-up-form {
+form.register-form {
     z-index: 1;
     opacity: 0;
 }
@@ -258,40 +258,40 @@ form.sign-up-form {
   
   /* ANIMATION */
   
-  .container.sign-up-mode:before {
+  .container.login-mode:before {
     transform: translate(100%, -50%);
     right: 52%;
   }
   
-  .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .container.register-mode .left-panel .image,
+  .container.register-mode .left-panel .content {
     transform: translateX(-800px);
   }
   
-  .container.sign-up-mode .signin-signup {
+  .container.register-mode .signin-signup {
     left: 25%;
   }
   
-  .container.sign-up-mode form.sign-up-form {
+  .container.register-mode form.sign-up-form {
     opacity: 1;
     z-index: 2;
   }
   
-  .container.sign-up-mode form.sign-in-form {
+  .container.register-mode form.sign-in-form {
     opacity: 0;
     z-index: 1;
   }
   
-  .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .container.register-mode .right-panel .image,
+  .container.register-mode .right-panel .content {
     transform: translateX(0%);
   }
   
-  .container.sign-up-mode .left-panel {
+  .container.register-mode .left-panel {
     pointer-events: none;
   }
   
-  .container.sign-up-mode .right-panel {
+  .container.register-mode .right-panel {
     pointer-events: all;
   }
   
@@ -300,15 +300,15 @@ form.sign-up-form {
       min-height: 800px;
       height: 100vh;
     }
-    .signin-signup {
+    .login-register {
       width: 100%;
       top: 95%;
       transform: translate(-50%, -100%);
       transition: 1s 0.8s ease-in-out;
     }
   
-    .signin-signup,
-    .container.sign-up-mode .signin-signup {
+    .login-register,
+    .container.register-mode .login-register {
       left: 50%;
     }
   
@@ -371,19 +371,19 @@ form.sign-up-form {
       transition: 2s ease-in-out;
     }
   
-    .container.sign-up-mode:before {
+    .container.register-mode:before {
       transform: translate(-50%, 100%);
       bottom: 32%;
       right: initial;
     }
   
-    .container.sign-up-mode .left-panel .image,
-    .container.sign-up-mode .left-panel .content {
+    .container.register-mode .left-panel .image,
+    .container.register-mode .left-panel .content {
       transform: translateY(-300px);
     }
   
-    .container.sign-up-mode .right-panel .image,
-    .container.sign-up-mode .right-panel .content {
+    .container.register-mode .right-panel .image,
+    .container.register-mode .right-panel .content {
       transform: translateY(0px);
     }
   
@@ -392,7 +392,7 @@ form.sign-up-form {
       transform: translateY(300px);
     }
   
-    .container.sign-up-mode .signin-signup {
+    .container.register-mode .login-register {
       top: 5%;
       transform: translate(-50%, 0);
     }
@@ -418,7 +418,7 @@ form.sign-up-form {
       left: 50%;
     }
   
-    .container.sign-up-mode:before {
+    .container.register-mode:before {
       bottom: 28%;
       left: 50%;
     }
