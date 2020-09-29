@@ -9,44 +9,31 @@ const app = express();
 const exphbs = require('express-handlebars');
 const path = require('path');
 const request = require('request');
+const bcrypt = require('bcrypt');
 
-const PORT = process.env.PORT || 8080;
-
-
-// API key pk_f37fe7e4cbe74f4a85a02621ccabbc00
-// create call_api function
-function call_api(finishedAPI) {
+const PORT = process.env.PORT || 8081;
 
 
-    request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_f37fe7e4cbe74f4a85a02621ccabbc00', { json: true }, (err, res, body) => {
-        if (err) { return console.log(err); }
-        console.log(body);
-        if (res.statusCode === 200) {
-            finishedAPI(body);
-        }
-    });
-}
+
 // Set Handlebars Middleware
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+app.use(express.json())
+const users = []
+app.get('/users', (req, res) => {
+	res.json(users)
+})
+app.post('/users', (req, res) => {
+	const user = {email: req.body.name, password: req.body.password}
+	users.push(user)
+	res.status(201).send()
+});
 // Set handlebar routes
-app.get('/', function (req, res) {
-    call_api(function (doneAPI) {
-        res.render('home', {
-            stock: doneAPI
-        });
-    });
-
-
-    // create market page route
-    app.get('/market.html', function (req, res) {
-        res.render('market');
-    })
 /// Adding in html
     // Set static folder
     app.use(express.static(path.join(__dirname, 'public')));
 
 
     app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
-});
+
