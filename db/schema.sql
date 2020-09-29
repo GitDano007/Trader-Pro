@@ -4,8 +4,8 @@ CREATE DATABASE trading_accountDB;
 
 USE trading_accountDB;
 
-CREATE TABLE account(
-  id Int AUTO_INCREMENT NOT NULL,
+CREATE TABLE users(
+  id Int (10) AUTO_INCREMENT NOT NULL,
   account_name VARCHAR(100) NOT NULL,
   password VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
