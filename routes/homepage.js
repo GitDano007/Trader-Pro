@@ -1,5 +1,5 @@
 var unirest = require('unirest');
-var req = unirest('GET', 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-summary');
+var req = unirest('GET', 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes');
 req.query({
 	'region': 'US'
 });

@@ -39,5 +39,6 @@ CREATE TABLE all_stock(
   stock_200day_average INT,
   stock_year_high INT,
   stock_year_low INT,
+  stock_symbol VARCHAR(10),
   PRIMARY KEY (id)
 );
