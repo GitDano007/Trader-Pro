@@ -68,6 +68,7 @@ input, button {
 }
 .container{
     margin-top: 130px;
+    margin-left: 385px;
     overflow: hidden;
     position: relative;
     width: 740px;
