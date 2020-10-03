@@ -29,5 +29,22 @@ async function printData(data){
 
 async function showData(stockData){
     console.log(stockData)
+
+    const symbol = data[i].symbol;
+    const longName = data[i].longName;
+    const regularMarketPrice = data[i].regularMarketPrice ;
+    const regularMarketChangePercent = [];
+    const APIKey = '16471ddbe1mshaa29c110d16c899p1efb9fjsn0e36b112d5de';
+    
+    for (let i = 0; i < result.status, result.body.finance.result[0].quotes; i++){
+        var stockData = stockData[i];
+        var ticker = $('<div></div>').addClass('ticker')
+        ticker.append('<p>hello</p>');
+        $('.cardArea').append(ticker);
+        $('.symbol').append(symbol.data[i]);
+        $('.company').append(longName.data[i]);
+        $('.Stock price').append(regularMarketPrice.data[i]);
+        $('.Percentage change').append(regularMarketChangePercent.data[i]);
+	}
 }
 
