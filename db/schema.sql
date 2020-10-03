@@ -26,11 +26,11 @@ CREATE TABLE watchlist(
 CREATE TABLE all_stock(
   id Int AUTO_INCREMENT NOT NULL,
   short_name VARCHAR(100) NOT NULL,
+  stock_symbol VARCHAR(10),
   stock_current_price INT NOT NULL,
   stock_daily_high INT,
   stock_daily_low INT,
-  stock_year_hligh INT,
+  stock_year_high INT,
   stock_year_low INT,
-  stock_symbo VARCHAR(10),
   PRIMARY KEY (id)
 );
