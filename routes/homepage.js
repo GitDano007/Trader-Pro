@@ -46,19 +46,40 @@
 //     console.log(stockData)
 // }
 
-const express = require('express');
-const app = express();
-const unirest = require("unirest");
-const { data } = require('jquery');
+// const express = require('express');
+// const app = express();
+// const unirest = require("unirest");
+// const { data } = require('jquery');
 
-function call_api(){
-    unirest.get('https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/TWLO,BBBY,RKT,NFLX,TSLA')
-    .header("X-RapidAPI-Key", '0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596')
-    .header('x-rapidapi-host', 'yahoo-finance15.p.rapidapi.com')
-    .end(function (result) {
-    // let data = result.body.finance.result[0].quotes
-    console.log(result.status);
-    // printData(data)
-    // return data
-    });
-}
+// function call_api(){
+//     unirest.get('https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/TWLO,BBBY,RKT,NFLX,TSLA')
+//     .header("X-RapidAPI-Key", '0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596')
+//     .header('x-rapidapi-host', 'yahoo-finance15.p.rapidapi.com')
+//     .end(function (result) {
+//     // let data = result.body.finance.result[0].quotes
+//     console.log(result.status);
+//     // printData(data)
+//     // return data
+//     });
+// }
+
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/TSLA");
+
+req.headers({
+	"x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
+	"x-rapidapi-key": "0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596",
+	"useQueryString": true
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
+
+module
+
+

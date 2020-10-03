@@ -29,8 +29,8 @@ CREATE TABLE all_stock(
   stock_current_price INT NOT NULL,
   stock_daily_high INT,
   stock_daily_low INT,
-  stock_year_high INT,
+  stock_year_hligh INT,
   stock_year_low INT,
-  stock_symbol VARCHAR(10),
+  stock_symbo VARCHAR(10),
   PRIMARY KEY (id)
 );
