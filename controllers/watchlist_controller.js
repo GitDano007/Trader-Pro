@@ -1,5 +1,5 @@
 var express = require('express');
-var userStocks = require("../models/watchList"); 
+var userStocks = require("../models/all_stock"); 
 // all api routes
 var router = express.Router();
 

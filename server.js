@@ -10,6 +10,8 @@ const unirest = require('unirest');
 
 const PORT = process.env.PORT || 8080;
 
+var db = require("./models");
+
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,7 +64,7 @@ app.use(routes);
 				stock_symbol: res.body[i].symbol 
 				  
 			} 
-			console.log(quote);
+			;
 		}
 	
 	});
