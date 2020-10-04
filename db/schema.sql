@@ -19,7 +19,7 @@ CREATE TABLE watchlist(
   stock_daily_high INT,
   stock_daily_low INT,
   stock_year_high INT,
-  stock_year_low INT
+  stock_year_low INT,
   PRIMARY KEY (id)
 );
 

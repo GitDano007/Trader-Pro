@@ -8,11 +8,15 @@ const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const unirest = require('unirest');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 6969;
 
 var db = require("./models");
 
 app.use(express.static("public"));
+
+//routes
+require("./routes/all_stock_api_routes.js")(app);
+require("./routes/users_api_routes.js")(app);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -56,16 +60,17 @@ app.use(routes);
 		for (let i = 0; i < res.body.length; i++) {
 			const quote = {
 				short_name: res.body[i].shortName,
+				stock_symbol: res.body[i].symbol,
   				stock_current_price: res.body[i].ask,
   				stock_daily_high: res.body[i].regularMarketDayHigh,
   				stock_daily_low: res.body[i].regularMarketDayLow,
   				stock_year_high: res.body[i].fiftyTwoWeekHigh,
-  				stock_year_low: res.body[i].fiftyTwoWeekLow,
-				stock_symbol: res.body[i].symbol 
+  				stock_year_low: res.body[i].fiftyTwoWeekLow
+				
 				  
-			} 
-			;
-		}
+			}; 
+			console.log(quote);
+		};
 	
 	});
 
@@ -99,9 +104,13 @@ req.end(function (res) {
 		}
 
 	})
+	//don't forget to remove force true before deployment 
+	db.sequelize.sync({ force: true }).then(function() {
+		app.listen(PORT, function() {
+		  console.log("App listening on PORT " + PORT);
+		});
+	  });
+
 	
-
-
-	
-    app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
-
+    //app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
+});
