@@ -1,8 +1,9 @@
-DROP DATABASE IF EXISTS trading_accountDB;
+drop database if exists trading_accountDB;
 
-CREATE DATABASE trading_accountDB;
+create database trading_accountDB;
 
-USE trading_accountDB;
+use trading_accountDB;
+
 
 CREATE TABLE users(
   id Int (10) AUTO_INCREMENT NOT NULL,
@@ -34,3 +35,4 @@ CREATE TABLE all_stock(
   stock_year_low INT,
   PRIMARY KEY (id)
 );
+
