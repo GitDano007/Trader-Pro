@@ -11,12 +11,14 @@ passport.use(
       usernameField: 'email'
     },
     (email, password, done) => {
+      console.log("my email password", email, password);
       // When a user tries to sign in this code runs
       db.User.findOne({
         where: {
           email: email
         }
       }).then(dbUser => {
+        console.log("user has been found");
         // If there's no user with the given email
         if (!dbUser) {
           return done(null, false, {
