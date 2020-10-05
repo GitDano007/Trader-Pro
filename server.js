@@ -131,7 +131,7 @@ require("./routes/homepage.js")(app);
 // 		}
 
 // 	})
-// db.sequelize.sync({force: true}).then(() => {
-// 	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
-// })
+db.sequelize.sync({force: true}).then(() => {
+	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
+})
 	
