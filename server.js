@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Set Handlebars Middleware
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.use(express.json())
@@ -38,6 +38,7 @@ app.post('/users', (req, res) => {
 
 //routes
 require("./routes/api_routes.js")(app);
+require("./routes/homepage.js")(app);
 // require("./routes/all_stock_api_routes.js")(app);
 // require("./routes/users_api_routes.js")(app);
 
