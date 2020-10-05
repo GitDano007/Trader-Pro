@@ -10,7 +10,7 @@ const unirest = require('unirest');
 const db = require("./models");
 
 
-const PORT = process.env.PORT || 6969;
+const PORT = process.env.PORT || 6972;
 
 const mysql = require("mysql");
 var connection;
