@@ -1,6 +1,6 @@
 USE trading_accountDB;
 
-INSERT INTO `users` (`email`, `password`) VALUES ('email1', MD5('password'));
+INSERT INTO `users` (`email`, `password`) VALUES ('email', MD5('password'));
 
 
 

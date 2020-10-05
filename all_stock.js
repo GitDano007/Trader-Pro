@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const all_stock = sequelize.define("all_stock", {
+    const all_stock = sequelize.define('all_stock', {
       short_name: {
         type: DataTypes.STRING,
         allowNull: false,
