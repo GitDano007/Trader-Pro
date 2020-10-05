@@ -156,15 +156,15 @@ require("./routes/homepage.js")(app);
 				regularMarketPrice: res.body.finance.result[0].quotes[i].regularMarketPrice,
 				regularMarketChangePercent: res.body.finance.result[0].quotes[i].regularMarketChangePercent,
 					   
-			} 
-			console.log(finance);
-		}
-	})
 
+ 			} 
+// 			console.log(finance);
+ 		}
 
- 	})
- db.sequelize.sync({force: true}).then(() => {
- 	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
- })
+})
+db.sequelize.sync({force: true}).then(() => {
+	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
+})
+
 	
 
