@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+// const app = express();
 const unirest = require("unirest");
 const { data } = require('jquery');
 
@@ -58,6 +58,7 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post('/api/login', passport.authenticate('local'), function(req, res) {
     // Sending back a password, even a hashed password, isn't a good idea
+    console.log("WE'RE LOGGED IN");
     res.json({
       email: req.user.email,
       id: req.user.id
