@@ -35,7 +35,7 @@ $(document).ready(() => {
       })
         .then((data) => {
           console.log('yourloggedin', data);
-          window.location.replace('/members');
+          window.location.replace('/watchlist');
           // If there's an error, log the error
         })
         .catch(err => {

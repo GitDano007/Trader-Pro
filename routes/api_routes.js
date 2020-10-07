@@ -76,7 +76,7 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(function() {
-        res.redirect(307, '/');
+        res.redirect(307, '/index');
       })
       .catch(function(err) {
         res.status(401).json(err);
@@ -86,7 +86,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/index');
   });
 
   // Route for getting some data about our user to be used client side

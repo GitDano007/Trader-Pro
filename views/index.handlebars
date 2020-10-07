@@ -90,11 +90,11 @@
 <body>
     <header id='masthead'>
         <div class='logo'>
-            <a href='index.html' id='trader-logo' aria-label='Trader Pro spelled T R A D E R P R O'>Trader Pro</a>
+            <a href='index.handlebars' id='trader-logo' aria-label='Trader Pro spelled T R A D E R P R O'>Trader Pro</a>
         </div>
         <nav>
-            <a href='index.html'>Home<i class='fa fa-user-circle'></i></a>
-            <a href='watchlist.handlebars'>Watchlist<i class='fa fa-folder-open'></i></a>
+            {{!-- <a href='/index'>Home<i class='fa fa-user-circle'></i></a> --}}
+            <a href='watchlist'>Watchlist<i class='fa fa-folder-open'></i></a>
             <a href='ourTeam.html'>Contact Us<i class='fa fa-file'></i></a>
         </nav>
     </header>
@@ -170,6 +170,57 @@
             </div>
         </div>
     </div>
+<script>
+    function call_api(){
+        unirest.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers')
+        .header("X-RapidAPI-Key", '16471ddbe1mshaa29c110d16c899p1efb9fjsn0e36b112d5de')
+        .header('x-rapidapi-host', 'apidojo-yahoo-finance-v1.p.rapidapi.com')
+        .end(function (result) {
+        let data = result.body.finance.result[0].quotes
+        // console.log(result.status, result.body.finance.result[0].quotes);
+        printData(data)
+        return data
+        });
+    }
+
+    async function printData(data){
+        let stockData = []
+        let formattedData;
+        //  await console.log(data)
+        for(i = 0; i < data.length; i++) {
+            formattedData = `Stock Symbol: ${data[i].symbol}, Company: ${data[i].longName} Stock Price: ${data[i].regularMarketPrice}, Stock Change Percentage: ${data[i].regularMarketChangePercent}`
+            stockData.push(formattedData)
+        }
+        showData(stockData);
+        return stockData;
+    }
+ </script>
+        <br/>{{stockData}}<br>
+    <div class="jumbotron">
+      <center> 
+      <h1 class="display-4">{{stockData.longName}} ({{stockData.symbol}})</h1>
+      <hr class="my-4 text-center">
+      <strong>Market price:</strong> ${{stockData.regularMarketPrice}}<br/>
+      <strong>Change Percent:</strong> ${{stockData.regularMarketChangePercent}}<br/>
+
+      </center>
+    </div>
+    <br><br><br>
+   
+    <br><br><br>
+    
+   
+  <script>   
+// Setting Handlebars POST route
+app.post('/', function (req, res) {
+    call_api(function(doneAPI){
+        // posted_stuff=req.body.stock_ticker;
+        res.render('home',{
+            stock: doneAPI,
+        });
+    },req.body.stock_ticker);    
+});
+</script>
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
     <script src='./js/login.js' type='text/javascript'></script>
