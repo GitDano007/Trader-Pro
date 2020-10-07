@@ -13,24 +13,24 @@ const mysql = require("mysql");
 
 const PORT = process.env.PORT || 6972;
 
-const mysql = require("mysql");
-var connection;
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-        host: 'localhost',
-        port: '3306',
-        user: 'root',
-        password: 'password',
-        database: 'trading_accountDB'
-    });
-};
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as id " + connection.threadId);
-});
+// let connection;
+
+// if (process.env.JAWSDB_URL) {
+//     connection = mysql.createConnection(process.env.JAWSDB_URL);
+// } else {
+//     connection = mysql.createConnection({
+//         host: 'localhost',
+//         port: '3306',
+//         user: 'root',
+//         password: 'HappyLittleTrees',
+//         database: 'trading_accountDB'
+//     });
+// };
+// connection.connect(function (err) {
+//     if (err) throw err;
+//     console.log("connected as id " + connection.threadId);
+// });
 
 
 app.use(express.static("public"));
@@ -42,11 +42,11 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 	user: "root",
-	password: "password",
+	password: "HappyLittleTrees",
 	database: "trading_accountDB"
   });
   
@@ -161,10 +161,9 @@ require("./routes/homepage.js")(app);
 // 			console.log(finance);
  		}
 
-})
-db.sequelize.sync({force: true}).then(() => {
+	})
+	db.sequelize.sync({force: true}).then(() => {
 	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
-})
+	})
 
-	
-
+});
