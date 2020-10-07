@@ -67,8 +67,8 @@ input, button {
     background: none;
 }
 .container{
+    margin: 0 auto;
     margin-top: 130px;
-    margin-left: 385px;
     overflow: hidden;
     position: relative;
     width: 740px;

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const all_stock = sequelize.define('all_stock', {
+    const All_stock = sequelize.define('All_stock', {
       short_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -13,27 +13,27 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       },
       stock_current_price: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         len: [1]
       },
       stock_daily_high: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         len: [1]
       },
       stock_daily_low: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         len: [1]
       },
       stock_year_high: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         len: [1]
       },
       stock_year_low: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         len: [1]
       },
@@ -50,5 +50,5 @@ module.exports = function(sequelize, DataTypes) {
     //   });
     // };
   
-    return all_stock;
+    return All_stock;
   };

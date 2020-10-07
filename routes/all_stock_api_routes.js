@@ -1,71 +1,119 @@
 var db = require("../models");
+const unirest = require('unirest');
+const { response } = require("express");
 
 
-// Routes
-// =============================================================
+// // Routes
+// // =============================================================
 module.exports = function(app) {
 
     // GET route for getting all of the posts
-    app.get("/api/all_stock", function(req, res) {
-      var query = {};
-      if (req.query.users_id) {
-        query.usersId = req.query.users_id;
-      }
-      // Here we add an "include" property to our options in our findAll query
-      // We set the value to an array of the models we want to include in a left outer join
-      // In this case, just db.Author
-      db.all_stock.findAll({
-        where: query,
-        include: [db.users]
-      }).then(function(dball_stock) {
-        res.json(dball_stock);
-      });
-    });
+    // app.get("/api/all_stock", function(req, res) {
+    //   var query = {};
+    //   if (req.query.users_id) {
+    //     query.usersId = req.query.users_id;
+    //   }
+    //   // Here we add an "include" property to our options in our findAll query
+    //   // We set the value to an array of the models we want to include in a left outer join
+    //   // In this case, just db.Author
+    //   db.all_stock.findAll({
+    //     where: query,
+    //     include: [db.users]
+    //   }).then(function(dball_stock) {
+    //     res.json(dball_stock);
+    //   });
+    // });
   
-    // Get route for retrieving a single post
-    app.get("/api/all_stock/:id", function(req, res) {
-      // Here we add an "include" property to our options in our findOne query
-      // We set the value to an array of the models we want to include in a left outer join
-      // In this case, just db.Author
-      db.all_stock.findOne({
-        where: {
-          id: req.params.id
-        },
-        include: [db.users]
-      }).then(function(dball_stock) {
-        res.json(dball_stock);
-      });
-    });
+  	var req = unirest("GET", "https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/TSLA,AAPL,AMZN,MSFT,GOOG,WMT,BEST,INTC,NFLX,XOM,NVDA,BAC,CVX,WFC,BA,VZ,JNJ,BABA,HD,ABBV,DIS,CSCO,ORCL,AAL,QQQ,AMGN,NKLA,FANG,BBBY,BUD,JPM,KIRK,VSLR,DKNG,LVGO,FVRR,ZM,PTON,PLUG,APPS,DOCU,RDFN,Z,LAC,PACB,FBIO,NVDA,TTD,DRD,PLMR");
+	
+    	req.headers({
+		  "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
+		  "x-rapidapi-key": "0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596",
+		  "useQueryString": true
+	   });
+	
+	
+	  req.end(function (res) {
+		if (res.error) throw new Error(res.error);
+
+		for (let i = 0; i < res.body.length; i++) {
+			const quote = {
+				short_name: res.body[i].shortName,
+				stock_symbol: res.body[i].symbol,
+  				stock_current_price: res.body[i].ask,
+  				stock_daily_high: res.body[i].regularMarketDayHigh,
+  				stock_daily_low: res.body[i].regularMarketDayLow,
+  				stock_year_high: res.body[i].fiftyTwoWeekHigh,
+  				stock_year_low: res.body[i].fiftyTwoWeekLow
+				
+				  
+			}; 
+			// console.log(quote);
+		};
+	
+  });
   
-    // POST route for saving a new post
-    app.post("/api/all_stock", function(req, res) {
-      db.all_stock.create(req.body).then(function(dball_stock) {
-        res.json(dball_stock);
-      });
-    });
+    app.post("/api/quote", (req, res) => {
+      console.log(req)
+      db.all_stock.create({
+        short_name: req.body.shortName,
+        stock_symbol: req.body.symbol,
+        stock_current_price: req.body.ask,
+        stock_daily_high: req.body.regularMarketDayHigh, 
+        stock_daily_low: req.body.regularMarketDayLow,
+        stock_year_high: req.body.fiftyTwoWeekHigh,
+        stock_year_low: req.body.fiftyTwoWeekLow
+    
+      })
+      .then(function() {
+        res.render("/watchlist");
+      })
+    })
+}   
+//     // Get route for retrieving a single post
+//     app.get("/api/all_stock/:id", function(req, res) {
+//       // Here we add an "include" property to our options in our findOne query
+//       // We set the value to an array of the models we want to include in a left outer join
+//       // In this case, just db.Author
+//       db.all_stock.findOne({
+//         where: {
+//           id: req.params.id
+//         },
+//         include: [db.users]
+//       }).then(function(dball_stock) {
+//         res.json(dball_stock);
+//       });
+//     });
   
-    // DELETE route for deleting posts
-    app.delete("/api/all_stock/:id", function(req, res) {
-      db.all_stock.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(function(dball_stock) {
-        res.json(dball_stock);
-      });
-    });
+//     // POST route for saving a new post
+//     app.post("/api/all_stock", function(req, res) {
+//       db.all_stock.create(req.body).then(function(dball_stock) {
+//         res.json(dball_stock);
+//       });
+//     });
   
-    // PUT route for updating posts
-    app.put("/api/all_stock", function(req, res) {
-      db.all_stock.update(
-        req.body,
-        {
-          where: {
-            id: req.body.id
-          }
-        }).then(function(dball_stock) {
-        res.json(dball_stock);
-      });
-    });
-  };
+//     // DELETE route for deleting posts
+//     app.delete("/api/all_stock/:id", function(req, res) {
+//       db.all_stock.destroy({
+//         where: {
+//           id: req.params.id
+//         }
+//       }).then(function(dball_stock) {
+//         res.json(dball_stock);
+//       });
+//     });
+  
+//     // PUT route for updating posts
+//     app.put("/api/all_stock", function(req, res) {
+//       db.all_stock.update(
+//         req.body,
+//         {
+//           where: {
+//             id: req.body.id
+//           }
+//         }).then(function(dball_stock) {
+//         res.json(dball_stock);
+//       });
+//     });
+//   };
   
