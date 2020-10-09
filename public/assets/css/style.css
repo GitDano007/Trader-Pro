@@ -373,3 +373,27 @@ button {
     color: black!important;
 }
 
+/* Watchlist.handlebars style */
+
+.watch {
+  text-align: center;
+  font-size: xx-large;
+  margin-top: 4rem;
+  color: #0c0101;
+}
+
+.btn {
+  color: #efefef;
+  border: double;
+  border-color: darkgreen;
+  width: 120px;
+  background-color: #575988;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+}
+
+.dropdown {
+  border-block-color: black;
+  width: 200px;
+  height: 30px  
+}

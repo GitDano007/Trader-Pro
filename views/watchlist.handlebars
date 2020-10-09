@@ -1,5 +1,16 @@
 <body>
-<h1>Stock Watch list.</h1>
+     <header id='masthead'>
+        <div class='logo'>
+            <a href='index.handlebars' id='trader-logo' aria-label='Trader Pro spelled T R A D E R P R O'>Trader Pro</a>
+        </div>
+        <nav>
+            {{!-- <a href='/index'>Home<i class='fa fa-user-circle'></i></a> --}}
+            <a href='watchlist'>Watchlist<i class='fa fa-folder-open'></i></a>
+            <a href='ourTeam.html'>Contact Us<i class='fa fa-file'></i></a>
+        </nav>
+    </header>
+<br><br>
+<h2 class='watch'>Stock Watch list.</h2>
 
     <ul>
       {{#each movies}}
@@ -12,11 +23,13 @@
         </li>
       {{/each}}
     </ul>
-    
-    <h2>Add a stock to watch list </h2>
+    <br><br>
+    {{!-- <h2>Add a stock to watch list </h2> --}}
     <form id="addstock" class="button-size">
-        <select type="text" name="browse_stock"></select>
-        <button type="submit">Save stock</button>
+        <select class='dropdown' type="text" name="browse_stock">
+          Add a Stock to your Watchlist.
+        </select>
+        <button class='btn' type="submit">Save stock</button>
     </form>
     {{!--create a drop down from a button that says browse stocks. drop down should contain all short names from all_stock table }}
 
@@ -43,12 +56,12 @@
         );
       });
     
-      $("#addmovie").on("submit", function(event) {
+      $("#addstock").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
     
-        var newMovie = {
-          movie: $("#addmovie [name=movie]").val().trim()
+        var newStock = {
+          All_stock: $("#addmovie [name=movie]").val().trim()
         };
     
         // Send the POST request.
