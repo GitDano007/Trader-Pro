@@ -30,7 +30,7 @@ const connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 	user: "root",
-	password: "HappyLittleTrees",
+	password: "password",
 	database: "trading_accountDB"
   });
   
@@ -125,4 +125,4 @@ require("./routes/all_stock_api_routes.js")(app);
 	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
 	})
 
-});
+//});
