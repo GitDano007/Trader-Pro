@@ -1,3 +1,4 @@
+
 <body>
      <header id='masthead'>
         <div class='logo'>
@@ -25,12 +26,56 @@
     </ul>
     <br><br>
     {{!-- <h2>Add a stock to watch list </h2> --}}
+    
     <form id="addstock" class="button-size">
         <select class='dropdown' type="text" name="browse_stock">
+          {{#each short_names}}
+          <option value={{this.id}}>{{this.name}}</option>
+          {{/each}}
           Add a Stock to your Watchlist.
         </select>
         <button class='btn' type="submit">Save stock</button>
+
     </form>
+ 
+ 
+ 
+ {{!-- <script>
+ $("#addstock").on("submit", function(event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+    
+        var newStock = {
+          All_stock: $("#addstock [name=shortName]").val().trim()
+        };
+    
+        // Send the POST request.
+        $.ajax("/api/All_stocks", {
+          type: "POST",
+          data: newStock
+        }).then(
+          function() {
+            console.log("added new stock");
+            // Reload the page to get the updated list
+            location.reload();
+          }
+        );
+      });
+</script>
+ <ul>
+      {{#each All_stock}}
+        <li>
+          <p>
+            {{this.id}}. {{this.shortName}}
+    
+            <button data-stockid="{{this.id}}" class="save stock">Save</button>
+          </p>
+        </li>
+      {{/each}}
+    </ul> --}}
+
+
+</body>
     {{!--create a drop down from a button that says browse stocks. drop down should contain all short names from all_stock table }}
 
     {{!-- <h2>Update a Movie</h2>

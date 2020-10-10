@@ -23,14 +23,14 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-
-
-
+// if (process.env.JAWSDB_URL) {
+//     connection = mysql.createConnection(process.env.JAWSDB_URL);
+// } else {
 const connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 	user: "root",
-	password: "HappyLittleTrees",
+	password: "password",
 	database: "trading_accountDB"
   });
   
@@ -50,11 +50,6 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.get('watchlist', function(req, res) {
-	res.render('watchlist', {
-		// test: request.body
-	});
-});
 
 app.use(express.json())
 
@@ -70,9 +65,26 @@ app.post('/users', (req, res) => {
 	res.status(201).send()
 });
 
+app.get('/watchlist', (req, res) => {
+	db.All_stock.findAll({}).then((data) => {
+		const names = [];
+
+		for(let i = 0; i < data.length; i++) {
+			
+			names.push({
+				id: data[i].dataValues.id,
+				name: data[i].dataValues.short_name
+			});
+		}
+
+		res.render('watchlist', { short_names: names });
+	})
+	
+});
+
 //routes
 require("./routes/api_routes.js")(app);
-require("./routes/homepage.js")(app);
+//require("./routes/homepage.js")(app);
 require("./routes/all_stock_api_routes.js")(app);
 // require("./routes/users_api_routes.js")(app);
 

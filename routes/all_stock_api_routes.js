@@ -1,5 +1,6 @@
 var db = require("../models");
 const unirest = require('unirest');
+const jade = require('jade')
 const { response } = require("express");
 
 
@@ -24,6 +25,7 @@ module.exports = function (app) {
   //   });
   // });
 
+
   var req = unirest("GET", "https://yahoo-finance15.p.rapidapi.com/api/yahoo/qu/quote/TSLA,AAPL,AMZN,MSFT,GOOG,WMT,BEST,INTC,NFLX,XOM,NVDA,BAC,CVX,WFC,BA,VZ,JNJ,BABA,HD,ABBV,DIS,CSCO,ORCL,AAL,QQQ,AMGN,NKLA,FANG,BBBY,BUD,JPM,KIRK,VSLR,DKNG,LVGO,FVRR,ZM,PTON,PLUG,APPS,DOCU,RDFN,Z,LAC,PACB,FBIO,NVDA,TTD,DRD,PLMR");
 
   req.headers({
@@ -36,11 +38,11 @@ module.exports = function (app) {
   req.end(function (res) {
     if (res.error) throw new Error(res.error);
     
-    const name = []  
+    const names = []  
 
     for (let i = 0; i < res.body.length; i++) {
       
-      name.push(res.body[i].shortName);
+      names.push(res.body[i].shortName);
 
       db.All_stock.create({
 
@@ -52,14 +54,30 @@ module.exports = function (app) {
         stock_year_high: res.body[i].fiftyTwoWeekHigh,
         stock_year_low: res.body[i].fiftyTwoWeekLow
       }).then( () => {
-        //res.render("/watchlist");
+        // res.render("/watchlist", {short_names:names})
       })
-      
+      //console.log({short_names:names});
+      //res.render("/watchlist", {short_names:names})
     };
-console.log(name)
+//console.log(names)
   });
 
+  
+
+
+app.get("/api/All_stocks/shortName", function(req, res) {
+  // findAll returns all entries for a table when used with no options
+  db.All_stocks.findAll({}).then(function(dbAllstocks) {
+    // We have access to the todos as an argument inside of the callback function
+    res.json(dbAllstocks);
+  });
+});
+
+
 }
+
+
+
 //     // Get route for retrieving a single post
 //     app.get("/api/all_stock/:id", function(req, res) {
 //       // Here we add an "include" property to our options in our findOne query
