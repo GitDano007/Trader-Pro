@@ -1,149 +1,49 @@
-
 <body>
-     <header id='masthead'>
-        <div class='logo'>
-            <a href='index.handlebars' id='trader-logo' aria-label='Trader Pro spelled T R A D E R P R O'>Trader Pro</a>
-        </div>
-        <nav>
-            {{!-- <a href='/index'>Home<i class='fa fa-user-circle'></i></a> --}}
-            <a href='watchlist'>Watchlist<i class='fa fa-folder-open'></i></a>
-            <a href='ourTeam.html'>Contact Us<i class='fa fa-file'></i></a>
-        </nav>
-    </header>
-<br><br>
-<h2 class='watch'>Stock Watch list.</h2>
+  <header id='masthead'>
+    <div class='logo'>
+      <a href='index.handlebars' id='trader-logo' aria-label='Trader Pro spelled T R A D E R P R O'>Trader Pro</a>
+    </div>
+    <nav>
+      {{!-- <a href='/index'>Home<i class='fa fa-user-circle'></i></a> --}}
+      <a href='watchlist'>Watchlist<i class='fa fa-folder-open'></i></a>
+      <a href='ourTeam.html'>Contact Us<i class='fa fa-file'></i></a>
+    </nav>
+  </header>
+  <br><br>
+  <h2 class='watch'>Stock Watch list.</h2>
 
-    <ul>
-      {{#each movies}}
-        <li>
-          <p>
-            {{this.id}}. {{this.movie}}
-    
-            <button data-movieid="{{this.id}}" class="delmovie">Delete</button>
-          </p>
-        </li>
-      {{/each}}
-    </ul>
-    <br><br>
-    {{!-- <h2>Add a stock to watch list </h2> --}}
-    
-    <form id="addstock" class="button-size">
-        <select class='dropdown' type="text" name="browse_stock">
-          {{#each short_names}}
-          <option value={{this.id}}>{{this.name}}</option>
-          {{/each}}
-          Add a Stock to your Watchlist.
-        </select>
-        <button class='btn' type="submit">Save stock</button>
+  {{!-- <h2>Add a stock to watch list </h2> --}}
 
-    </form>
- 
- 
- 
- {{!-- <script>
- $("#addstock").on("submit", function(event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-    
-        var newStock = {
-          All_stock: $("#addstock [name=shortName]").val().trim()
-        };
-    
-        // Send the POST request.
-        $.ajax("/api/All_stocks", {
-          type: "POST",
-          data: newStock
-        }).then(
-          function() {
-            console.log("added new stock");
-            // Reload the page to get the updated list
-            location.reload();
-          }
-        );
-      });
-</script>
- <ul>
-      {{#each All_stock}}
-        <li>
-          <p>
-            {{this.id}}. {{this.shortName}}
-    
-            <button data-stockid="{{this.id}}" class="save stock">Save</button>
-          </p>
-        </li>
+  <form id="addstock" class="button-size">
+    <select class='dropdown' type="text" name="browse_stock">
+      {{#each short_names}}
+      <option value={{this.id}}>{{this.name}}</option>
       {{/each}}
-    </ul> --}}
+      Add a Stock to your Watchlist.
+    </select>
+    <button class='btn' type="submit">Save stock</button>
+
+  </form>
+
+  <br><br>
+
+  <div class="card">
+    <div class="card-body">
+      {{#each short_names}}
+      <p value={{this.name}}{{this.symbol}}{{this.currentPrice}}{{this.dailyHigh}}{{this.dailyLow}}{{this.yearHigh}}>
+        {{this.yearLow}}</p>
+      {{/each}}
+      This is some text within a card body.
+    </div>
+  </div>
+
+  <script
+       
+         
+        src='./js/watchlist.js' type='text/javascript'>
+
+  </script>
+
 
 
 </body>
-    {{!--create a drop down from a button that says browse stocks. drop down should contain all short names from all_stock table }}
-
-    {{!-- <h2>Update a Movie</h2>
-    <form id="updatemovie" class="button-size">
-      <input type="text" name="id" placeholder="id">
-        <textarea type="text" name="movie" placeholder="what do you want to update this movie title to?"></textarea>
-        <button type="submit">Update Movie!</button>
-    </form> --}}
-    
-    <script type="text/javascript">
-      $(".delmovie").on("click", function(event) {
-        var id = $(this).data("movieid");
-    
-        // Send the DELETE request.
-        $.ajax("/api/movies/" + id, {
-          type: "DELETE"
-        }).then(
-          function() {
-            console.log("deleted id ", id);
-            // Reload the page to get the updated list
-            location.reload();
-          }
-        );
-      });
-    
-      $("#addstock").on("submit", function(event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-    
-        var newStock = {
-          All_stock: $("#addmovie [name=movie]").val().trim()
-        };
-    
-        // Send the POST request.
-        $.ajax("/api/movies", {
-          type: "POST",
-          data: newMovie
-        }).then(
-          function() {
-            console.log("added new movie");
-            // Reload the page to get the updated list
-            location.reload();
-          }
-        );
-      });
-    
-      {{!-- $("#updatemovie").on("submit", function(event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-    
-        var id = $("[name=id]").val().trim();
-    
-        var updatedMovie = {
-          movie: $("#updatemovie [name=movie]").val().trim()
-        };
-    
-        // Send the PUT request.
-        $.ajax("/api/movies/" + id, {
-          type: "PUT",
-          data: updatedMovie
-        }).then(
-          function() {
-            console.log("updated id ", id);
-            // Reload the page to get the updated list
-            location.reload();
-          }
-        );
-      }); --}}
-    </script>
-
-    </body>
