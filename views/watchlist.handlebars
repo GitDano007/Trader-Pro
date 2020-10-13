@@ -15,9 +15,9 @@
   {{!-- <h2>Add a stock to watch list </h2> --}}
 
   <form id="addstock" class="button-size">
-    <select class='dropdown' type="text" name="browse_stock">
+    <select id='dropdown' type="text" name="browse_stock">
       {{#each short_names}}
-      <option value={{this.id}}>{{this.name}}</option>
+      <option class='option' value={{this.id}}>{{this.name}}</option>
       {{/each}}
       Add a Stock to your Watchlist.
     </select>
