@@ -37,11 +37,11 @@ module.exports = function (app) {
 
   req.end(function (res) {
     if (res.error) throw new Error(res.error);
-    
-    const names = []  
+
+    const names = []
 
     for (let i = 0; i < res.body.length; i++) {
-      
+
       names.push(res.body[i].shortName);
 
       db.All_stock.create({
@@ -53,46 +53,49 @@ module.exports = function (app) {
         stock_daily_low: res.body[i].regularMarketDayLow,
         stock_year_high: res.body[i].fiftyTwoWeekHigh,
         stock_year_low: res.body[i].fiftyTwoWeekLow
-      }).then( () => {
+      }).then(() => {
         // res.render("/watchlist", {short_names:names})
       })
       //console.log({short_names:names});
       //res.render("/watchlist", {short_names:names})
     };
-//console.log(names)
+    //console.log(names)
   });
 
-  
 
 
-app.get("/api/All_stocks/shortName", function(req, res) {
-  // findAll returns all entries for a table when used with no options
-  db.All_stocks.findAll({}).then(function(dbAllstocks) {
-    // We have access to the todos as an argument inside of the callback function
-    res.json(dbAllstocks);
+
+  app.get("/api/All_stocks/shortName", function (req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.All_stocks.findAll({}).then(function (dbAllstocks) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbAllstocks);
+    });
   });
-});
 
 
+
+
+
+
+  // Get route for retrieving a single post
+  app.get("/api/stock/:id", function (req, res) {
+    
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Author
+    db.All_stock.findOne({
+      where: {
+        id: req.params.id
+      }
+
+    }).then(function (dball_stock) {
+      console.log(req.params.id)
+      res.json(dball_stock);
+      
+    });
+  });
 }
-
-
-
-//     // Get route for retrieving a single post
-//     app.get("/api/all_stock/:id", function(req, res) {
-//       // Here we add an "include" property to our options in our findOne query
-//       // We set the value to an array of the models we want to include in a left outer join
-//       // In this case, just db.Author
-//       db.all_stock.findOne({
-//         where: {
-//           id: req.params.id
-//         },
-//         include: [db.users]
-//       }).then(function(dball_stock) {
-//         res.json(dball_stock);
-//       });
-//     });
-
 //     // POST route for saving a new post
 //     app.post("/api/all_stock", function(req, res) {
 //       db.all_stock.create(req.body).then(function(dball_stock) {
