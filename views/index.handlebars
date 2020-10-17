@@ -195,6 +195,12 @@
         return stockData;
     }
  </script>
+
+    {{#each financeList}}
+
+    {{symbol}}: {{longName}}: {{regularMarketPrice}}: {{regularMarketChangePercent}}
+  
+    {{/each}}
         <br/>{{stockData}}<br>
     <div class="jumbotron">
       <center> 
