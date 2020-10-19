@@ -5,7 +5,7 @@
     </div>
     <nav>
       {{!-- <a href='/index'>Home<i class='fa fa-user-circle'></i></a> --}}
-      <a href='watchlist'>Watchlist<i class='fa fa-folder-open'></i></a>
+      <a href='watchlists'>Watchlist<i class='fa fa-folder-open'></i></a>
       <a href='ourTeam.html'>Contact Us<i class='fa fa-file'></i></a>
     </nav>
   </header>
@@ -29,7 +29,9 @@
 
   <div class="card" id="stockcard">
     <div class="card-body">
+      {{ log data }}
       {{#each data}}
+      
       <p value={{this.name}}{{this.symbol}}{{this.currentPrice}}{{this.dailyHigh}}{{this.dailyLow}}{{this.yearHigh}}>
         {{this.yearLow}}</p>
       {{/each}}
@@ -38,10 +40,10 @@
   </div>
 
   <script
-       
-         
-        src='./js/watchlist.js' type='text/javascript'>
-
+       src='./js/stockcard.js' type='text/javascript'>
+  </script>
+  <script
+        src='./js/onclickfunction.js' type='text/javascript'>
   </script>
 
 
