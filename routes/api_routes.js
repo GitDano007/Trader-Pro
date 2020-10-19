@@ -28,7 +28,7 @@ async function printData(data){
 }
 
 async function showData(stockData){
-    console.log(stockData)
+    // console.log(stockData)
 
     const symbol = data[i].symbol;
     const longName = data[i].longName;

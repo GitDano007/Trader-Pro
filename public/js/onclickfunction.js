@@ -2,41 +2,44 @@
         $(document).ready(() => {
 
 
-            const addstockform = $('form.addstock');
-            addstockform.on('submit', event => {
-                console.log('click me');
-                event.preventDefault();
-            });
+            // const addstockform = $('form.addstock');
+            // addstockform.on('submit', event => {
+            //     console.log('click me');
+            //     event.preventDefault();
+            // });
 
         });
 
         $("#addstock").on("submit", function (event) {
+            const name = [];
 
+            for(let i = 0; i < name.length; i++) {
+                
+                name.push({
+                    id: name[i].dataValues.id,
+                    name: name[i].dataValues.short_name
+                });
+            }
             // Make sure to preventDefault on a submit event.
             event.preventDefault();
             console.log('Ive been clicked');
 
-            var newStock = {
-                All_stock: $("#addstock [stocks]").val()
-            };
-
-            app.put("/api/All_stock", function (req, res) {
-                db.All_stock.findOne('#addstock').then((data) => {
-                    console.log(newStock);
-                })
-            });
+            
+           
 
             // // Send the POST request.
-            // $.ajax("/api/All_stocks", {
+            // $.ajax("/api/watchlist", {
             //   type: "POST",
-            //   data: newStock
+            //   data: name
+
             // }).then(
             //   function () {
             //     console.log("added new stock");
-            //     // Reload the page to get the updated list
-            //     location.reload();
-            //   }
-            // );
-        });
+                
+                
+              })
+        //     );
+        // });
+        
 
-
+            

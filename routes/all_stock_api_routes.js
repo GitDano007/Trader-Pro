@@ -1,6 +1,6 @@
 var db = require("../models");
 const unirest = require('unirest');
-const jade = require('jade')
+
 const { response } = require("express");
 
 
@@ -65,13 +65,13 @@ module.exports = function (app) {
 
 
 
-  app.get("/api/All_stocks/shortName", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.All_stocks.findAll({}).then(function (dbAllstocks) {
-      // We have access to the todos as an argument inside of the callback function
-      res.json(dbAllstocks);
-    });
-  });
+  // app.get("/api/All_stocks/shortName", function (req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.All_stocks.findAll({}).then(function (dbAllstocks) {
+  //     // We have access to the todos as an argument inside of the callback function
+  //     res.json(dbAllstocks);
+  //   });
+  // });
 
 
 
@@ -79,7 +79,7 @@ module.exports = function (app) {
 
 
   // Get route for retrieving a single post
-  app.get("/api/stock/:id", function (req, res) {
+  app.get("/api/All_stock/:id", function (req, res) {
     
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
@@ -90,11 +90,11 @@ module.exports = function (app) {
       }
 
     }).then(function (dball_stock) {
-      console.log(req.params.id)
-      res.json(dball_stock);
-      
+      console.log(dball_stock, "My Data response"); 
+      res.render("watchlist", { data: dball_stock.dataValues });
     });
   });
+
 }
 //     // POST route for saving a new post
 //     app.post("/api/all_stock", function(req, res) {
