@@ -28,23 +28,23 @@ $(document).ready(() => {
         console.log('Ive been clicked');
 
 
-        function stockID(short_name, stock_current_price) {
-            $.get('/api/All_stock', {
-                name: short_name,
-                currentPrice: stock_current_price
+        // function stockID(short_name, stock_current_price) {
+        //     $.get('/api/All_stock', {
+        //         name: short_name,
+        //         currentPrice: stock_current_price
 
-            })
-                .then(function (short_name, stock_current_price) {
-                    $.post('api/watchlist', {
-                        id: id,
-                        name: short_name,
-                        symbol: stock_symbol,
-                        currentPrice: stock_current_price
-                    })
-                        .catch(function (err) {
-                            console.log(err);
-                        });
-                })
+        //     })
+        //         .then(function (short_name, stock_current_price) {
+        //             $.post('api/watchlist', {
+        //                 id: id,
+        //                 name: short_name,
+        //                 symbol: stock_symbol,
+        //                 currentPrice: stock_current_price
+        //             })
+        //                 .catch(function (err) {
+        //                     console.log(err);
+        //                 });
+        //         })
 
 
             // // Send the POST request.
@@ -60,8 +60,10 @@ $(document).ready(() => {
 
             //     );
             // });
-        };
+        }
 
 
-    })
-})
+    
+    )}
+    
+    )

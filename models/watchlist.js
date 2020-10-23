@@ -2,14 +2,14 @@ module.exports = function(sequelize, DataTypes) {
     const watchlist = sequelize.define('watchlist', {
       short_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1]
         }
       },
       stock_symbol: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         len: [1]
       },
       stock_current_price: {
