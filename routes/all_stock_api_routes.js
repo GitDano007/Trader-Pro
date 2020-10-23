@@ -65,13 +65,14 @@ module.exports = function (app) {
 
 
 
-  app.get("/api/All_stocks/", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.All_stock.findAll({}).then(function (dballstock) {
-      // We have access to the todos as an argument inside of the callback function
-      res.json(dballstock.dataValues);
-    });
-  });
+  // app.get("/api/All_stocks/", function (req, res) {
+  //   // findAll returns all entries for a table when used with no options
+  //   db.All_stock.findAll({}).then(function (dballstock) {
+      
+  //     // We have access to the todos as an argument inside of the callback function
+  //     res.json(dballstock.dataValues);
+  //   });
+  // });
 
 
 
@@ -95,41 +96,56 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/watchlist/:id", function (req, res) {
+    
+    db.watchlist.findOne({
+      where: {
+        id: req.params.id,
+        name: req.params.shortName
+      },
+      include: [db.All_stock]
+
+    }).then(function (dbwatchlist) {
+      console.log(dbwatchlist, "My Data response 2"); 
+      res.json("watchlist", { data: dbwatchlist.dataValues });
+    });
+  })
+
 
 //     // POST route for saving a new post
     app.post("/api/watchlist", function(req, res) {
       db.watchlist.create({
-        short_name: req.body[i].shortName,
-        stock_symbol: req.body[i].symbol,
-        stock_current_price: req.body[i].ask,
-        stock_daily_high: req.body[i].regularMarketDayHigh,
-        stock_daily_low: req.body[i].regularMarketDayLow,
-        stock_year_high: req.body[i].fiftyTwoWeekHigh,
-        stock_year_low: req.body[i].fiftyTwoWeekLow
+        short_name: req.body.shortName,
+        stock_symbol: req.body.symbol,
+        stock_current_price: req.body.ask,
+        stock_daily_high: req.body.regularMarketDayHigh,
+        stock_daily_low: req.body.regularMarketDayLow,
+        stock_year_high: req.body.fiftyTwoWeekHigh,
+        stock_year_low: req.body.fiftyTwoWeekLow
       }).then(function(dbwatchlist) {
-        console.log(dbwatchlist, "My Data response 2");
+        console.log(dbwatchlist, "My Data response 3");
         res.json(dbwatchlist);
       });
     });
 
-    app.get("/api/All_stock/:id", function (req, res) {
+    // app.get("/api/All_stock/:id", function (req, res) {
     
-      // Here we add an "include" property to our options in our findOne query
-      // We set the value to an array of the models we want to include in a left outer join
-      // In this case, just db.Author
-      db.All_stock.findOne({
-        where: {
-          id: req.params.id
-        }
+    //   // Here we add an "include" property to our options in our findOne query
+    //   // We set the value to an array of the models we want to include in a left outer join
+    //   // In this case, just db.Author
+    //   db.All_stock.findOne({
+    //     where: {
+    //       id: req.params.id
+    //     }
   
-      }).then(function (dbwatchlist) {
-        console.log(dbwatchlist, "My Data response"); 
-        app.post("api/watchlist", function(req, res) {
-          console.log(dbwatchlist, "My Data response 2");
-          res.json(dbwatchlist);
-        })
-      });
-    });
+    //   }).then(function (dbwatchlist) {
+    //     console.log(dbwatchlist, "My Data response"); 
+    //     app.post("api/watchlist", function(req, res) {
+    //       console.log(dbwatchlist, "My Data response 2");
+    //       res.json(dbwatchlist);
+    //     })
+    //   });
+    // });
 
   }
 
