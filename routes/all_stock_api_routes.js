@@ -92,7 +92,8 @@ module.exports = function (app) {
 
     }).then(function (dball_stock) {
       console.log(dball_stock, "My Data response"); 
-      res.render("watchlist", { data: dball_stock.dataValues });
+      res.json(dball_stock)
+      // res.render("watchlist", { data: dball_stock.dataValues });
     });
   });
 
@@ -107,25 +108,19 @@ module.exports = function (app) {
 
     }).then(function (dbwatchlist) {
       console.log(dbwatchlist, "My Data response 2"); 
-      res.json("watchlist", { data: dbwatchlist.dataValues });
+      res.json(dbwatchlist)
+      // res.json("watchlist", { data: dbwatchlist.dataValues });
     });
   })
 
 
 //     // POST route for saving a new post
     app.post("/api/watchlist", function(req, res) {
-      db.watchlist.create({
-        short_name: req.body.shortName,
-        stock_symbol: req.body.symbol,
-        stock_current_price: req.body.ask,
-        stock_daily_high: req.body.regularMarketDayHigh,
-        stock_daily_low: req.body.regularMarketDayLow,
-        stock_year_high: req.body.fiftyTwoWeekHigh,
-        stock_year_low: req.body.fiftyTwoWeekLow
-      }).then(function(dbwatchlist) {
+      console.log('post watchlist: ', req.body)
+      db.watchlist.create(req.body).then(function(dbwatchlist) {
         console.log(dbwatchlist, "My Data response 3");
         res.json(dbwatchlist);
-      });
+      }).catch(err => console.log('create err: ', err))
     });
 
   

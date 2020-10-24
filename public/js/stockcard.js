@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    const drop = [];
+    // const drop = [];
 
     $("#addstock").on("submit", function (event)
     {
@@ -12,11 +12,21 @@ $(document).ready(() => {
         {
             console.log(drop, "my response");
 
-        }).then(function() {
-            $.post('/api/watchlist', drop, function ()
+        }).then(function(data) {
+            console.log('fsdfsd', data);
+            const stock = {
+                short_name: data.short_name,
+                stock_symbol: data.stock_symbol,
+                stock_current_price: data.stock_current_price,
+                stock_daily_high: data.stock_daily_high,
+                stock_daily_low: data.stock_daily_low,
+                stock_year_high: data.stock_year_high,
+                stock_year_low: data.stock_year_low,
+            }
+            $.post('/api/watchlist', stock, function (req, res)
             {
 
-                console.log(drop, "Hot Dog Finally");
+                console.log(res, "Hot Dog Finally");
             });
         });
         getDrop();
