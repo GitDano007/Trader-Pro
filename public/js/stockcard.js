@@ -1,43 +1,35 @@
 $(document).ready(() => {
+    const drop = [];
 
-
-    $("#addstock").on("submit", function (event) {
-        const drop = $("#dropdown").val()
-
-
-        // Make sure to preventDefault on a submit event.
+    $("#addstock").on("submit", function (event)
+    {
+        const drop = $("#dropdown").val();
+        
+// Make sure to preventDefault on a submit event.
         event.preventDefault();
 
-
-
-
-
-        $.get(`/api/All_stock/${drop}`, function (req, res) {
+        $.get(`/api/All_stock/${drop}`, function (req, res)
+        {
             console.log(drop, "my response");
 
-        }).then(data => {
-            $.post('/api/watchlist', data, function () {
-                console.log(data, "Hot Dog Finally");
-            }
-                // $.ajax({
-                //     url: 'watchlist',
-                //     type: 'post',
-                //     dataType: 'json',
-                //     success: function (data) {
-                //         $('.card').html(data)
-                //     },
+        }).then(function() {
+            $.post('/api/watchlist', drop, function ()
+            {
 
-                //     data: JSON.stringify(data)
+                console.log(drop, "Hot Dog Finally");
+            });
+        });
+        getDrop();
+        function getDrop() {
+            $.get("/api/watchlist", function (data)
+            {
+                drop = data;
 
-                // });
+            });
+           
 
-            )
-        })
-
-
-    })
-
-
-}
-
-)
+        }
+       
+        
+    });
+});

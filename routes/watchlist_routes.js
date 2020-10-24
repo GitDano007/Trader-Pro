@@ -1,11 +1,4 @@
-var db = require("../models");
-
-$("#addstock").on("submit", function (event) {
-    const drop = $("#dropdown").val()
-
-
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+const db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/watchlist", function(req, res) {
@@ -44,4 +37,3 @@ module.exports = function(app) {
  }); 
 }
 
-})
