@@ -30,7 +30,7 @@ module.exports = function (app) {
 
   req.headers({
     "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
-    "x-rapidapi-key": "0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596",
+    "x-rapidapi-key": "c19e0e157amsh230c2f6a8d7bf80p132affjsn40ac5c914de6",
     "useQueryString": true
   });
 
@@ -128,48 +128,6 @@ module.exports = function (app) {
       });
     });
 
-    // app.get("/api/All_stock/:id", function (req, res) {
-    
-    //   // Here we add an "include" property to our options in our findOne query
-    //   // We set the value to an array of the models we want to include in a left outer join
-    //   // In this case, just db.Author
-    //   db.All_stock.findOne({
-    //     where: {
-    //       id: req.params.id
-    //     }
   
-    //   }).then(function (dbwatchlist) {
-    //     console.log(dbwatchlist, "My Data response"); 
-    //     app.post("api/watchlist", function(req, res) {
-    //       console.log(dbwatchlist, "My Data response 2");
-    //       res.json(dbwatchlist);
-    //     })
-    //   });
-    // });
 
   }
-
-//     // DELETE route for deleting posts
-//     app.delete("/api/all_stock/:id", function(req, res) {
-//       db.all_stock.destroy({
-//         where: {
-//           id: req.params.id
-//         }
-//       }).then(function(dball_stock) {
-//         res.json(dball_stock);
-//       });
-//     });
-
-//     // PUT route for updating posts
-//     app.put("/api/all_stock", function(req, res) {
-//       db.all_stock.update(
-//         req.body,
-//         {
-//           where: {
-//             id: req.body.id
-//           }
-//         }).then(function(dball_stock) {
-//         res.json(dball_stock);
-//       });
-//     });
-//   };

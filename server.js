@@ -12,7 +12,7 @@ const mysql = require("mysql");
 
 
 
-const PORT = process.env.PORT || 6700;
+const PORT = process.env.PORT || 6800;
 
 
 app.use(express.static("public"));
@@ -31,7 +31,7 @@ const connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
 	user: "root",
-	password: "HappyLittleTrees",
+	password: "Sunshine6992!",
 	database: "trading_accountDB"
   });
   
@@ -108,7 +108,7 @@ app.get('/watchlist', (req, res) => {
 
 //routes
 require("./routes/api_routes.js")(app);
-//require("./routes/homepage.js")(app);
+// require("./routes/homepage.js")(app);
 require("./routes/all_stock_api_routes.js")(app);
 // require("./routes/users_api_routes.js")(app);
 
@@ -121,42 +121,6 @@ require("./routes/all_stock_api_routes.js")(app);
 //  app.use(routes);
     // Set static folder
 	app.use(express.static(path.join(__dirname, 'public')));
-	
-	
-
-
-
-
-// 	var req = unirest("GET", "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-trending-tickers");
-//     req.query({
-//     "region": "US"
-// 	});
-//     req.headers({
-//     "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-//     "x-rapidapi-key": "0e63cf5abcmsh4d3233bfb976d24p1d7311jsne67624f44596",
-//     "useQueryString": true
-// 	});
-// 	req.end(function (res) {
-// 	if (res.error) throw new Error(res.error);
-	
-//     // console.log(res.body.finance.result.quotes);
-	
-// 	req.end(function (res) {
-// 		if (res.error) throw new Error(res.error);
-	
-// 		for (let i = 0; i < res.body.finance.result[0].quotes.length; i++) {
-// 			const finance = {
-// 				symbol: res.body.finance.result[0].quotes[i].symbol,
-// 				longName: res.body.finance.result[0].quotes[i].longName,
-// 				regularMarketPrice: res.body.finance.result[0].quotes[i].regularMarketPrice,
-// 				regularMarketChangePercent: res.body.finance.result[0].quotes[i].regularMarketChangePercent,
-					   
-
-//  			} 
-//  			console.log(finance);
-//  		}
-
-// })
 
 	db.sequelize.sync({force: true}).then(() => {
 	app.listen(PORT, () => console.log('Server listening on: http://localhost:', + PORT))
