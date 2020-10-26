@@ -4,6 +4,7 @@
   "description": "As a user I would like to be able to practice Buying/Selling/Trading stocks in a no risk environment",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
