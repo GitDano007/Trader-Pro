@@ -96,18 +96,21 @@ module.exports = function (app)
     {
 
         db.watchlist.findOne(
+          
             {
+  
                 where: {
                     id: req.params.id,
-                    short_name: req.params.shortName
+                    // name: req.params.shortName
                 },
-                include: [db.All_stock]
+                // include: [db.All_stock]
 
-            }
+            },
+            console.log(short_name)
         ).then(function (dbwatchlist)
         {
             console.log(dbwatchlist, "My Data response 2");
-            res.render('watchlist', { short_names: stocks, stock_symbols: stocks, stock_current_prices: stocks, stock_daily_highs: stocks, stock_daily_lows: stocks, stock_year_highs: stocks, stock_year_lows: stocks  })
+            res.render('watchlist', { data: dbwatchlist })
 
         });
 
@@ -115,16 +118,16 @@ module.exports = function (app)
 
 
     // POST route for saving a new post
-    app.post("/api/watchlist", function (req, res)
-    {
-        console.log('post watchlist: ', req.body);
-        db.watchlist.create(req.body).then(function (dbwatchlist)
-        {
-            console.log(dbwatchlist, "My Data response 3");
+    // app.post("/api/watchlist", function (req, res)
+    // {
+    //     console.log('post watchlist: ', req.body);
+    //     db.watchlist.create(req.body).then(function (dbwatchlist)
+    //     {
+    //         console.log(dbwatchlist, "My Data response 3");
             
-            res.render('watchlist', { short_names: stocks, stock_symbols: stocks, stock_current_prices: stocks, stock_daily_highs: stocks, stock_daily_lows: stocks, stock_year_highs: stocks, stock_year_lows: stocks  })
+    //         res.render('watchlist', { short_names: stock, stock_symbols: stock, stock_current_prices: stock, stock_daily_highs: stock, stock_daily_lows: stock, stock_year_highs: stock, stock_year_lows: stock  })
             
-          }).catch(err => console.log("create err:", err))
+    //       }).catch(err => console.log("create err:", err))
           
-    }); 
+    // }); 
 };

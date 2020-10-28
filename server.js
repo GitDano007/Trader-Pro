@@ -101,8 +101,6 @@ app.get('/watchlist', (req, res) => {
 		   });
 		   
 	   }
-	//    res.render('watchlist', { short_names: stocks, stock_symbols: stocks, stock_current_prices: stocks, stock_daily_highs: stocks, stock_daily_lows: stocks, stock_year_highs: stocks, stock_year_lows: stocks  })
-	//    console.log(stocks);
    })  
 });
 

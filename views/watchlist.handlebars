@@ -32,8 +32,8 @@
       {{ log data }}
       {{#each data}}
       
-      <p value={{this.name}}{{this.symbol}}{{this.currentPrice}}{{this.dailyHigh}}{{this.dailyLow}}{{this.yearHigh}}>
-        {{this.yearLow}}</p>
+      <p value={{this.short_name}}{{this.stock_symbol}}{{this.stock_current_price}}{{this.stock_daily_high}}{{this.stock_daily_low}}{{this.stock_year_high}}>
+        {{this.stock_year_low}}</p>
       {{/each}}
       This is some text within a card body.
     </div>
