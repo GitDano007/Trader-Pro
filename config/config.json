@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Sunshine6992!",
+    "password": "password",
     "database": "trading_accountDB",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "qnr5vrmvbfa6azax",
-    "password": "n3814ztjpvs6ilr5" ,
-    "database": "database_production",
-    "host": "otmaa16c1i9nwrek.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "wbb1v222iyg298py",
+    "password": "xq6n3by5wczg3hic" ,
+    "database": "trading_accountDB",
+    "host": "arfo8ynm6olw6vpn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

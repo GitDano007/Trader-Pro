@@ -28,11 +28,11 @@ if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
 const connection = mysql.createConnection({
-	host: "otmaa16c1i9nwrek.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+	host: "localhost",
 	port: 3306,
-	user: "	qnr5vrmvbfa6azax",
-	password: "l1c959p0vl2j1k9k",
-	database: "gkhk29fk47pqlra7"
+	user: "wbb1v222iyg298py",
+	password: "xq6n3by5wczg3hic",
+	database: "trading_accountDB"
   });
 
   connection.connect(function(err) {
