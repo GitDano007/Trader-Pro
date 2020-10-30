@@ -12,7 +12,7 @@ const mysql = require("mysql");
 
 
 
-const PORT = process.env.PORT || 6800;
+const PORT = process.env.PORT || 6807;
 
 
 app.use(express.static("public"));
@@ -30,8 +30,8 @@ if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection({
 	host: "localhost",
 	port: 3306,
-	user: "wbb1v222iyg298py",
-	password: "xq6n3by5wczg3hic",
+	user: "root",
+	password: "password",
 	database: "trading_accountDB"
   });
 
