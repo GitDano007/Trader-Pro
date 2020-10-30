@@ -106,7 +106,7 @@ module.exports = function (app)
                 // include: [db.All_stock]
 
             },
-            console.log(short_name)
+           
         ).then(function (dbwatchlist)
         {
             console.log(dbwatchlist, "My Data response 2");
