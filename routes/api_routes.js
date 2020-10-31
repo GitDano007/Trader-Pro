@@ -15,7 +15,6 @@ module.exports = function(app) {
     app.post('/api/login', function(req, res) {
 
     // Sending back a password, even a hashed password, isn't a good idea
-    console.log("WE'RE LOGGED IN", req);
     res.json({
       email: req.body.email,
       id: req.body.password

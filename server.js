@@ -41,8 +41,7 @@ if (process.env.JAWSDB_URL) {
 	  return;
 	}
   
-	console.log("connected as id " + connection.threadId);
-  });
+git  });
 };
 
 app.get('/', function(req, res) {

@@ -17,7 +17,7 @@
     "username": "wbb1v222iyg298py",
     "password": "xq6n3by5wczg3hic" ,
     "database": "trading_accountDB",
-    "host": "127.0.0.1",
+    "host": "127.0.0.1git",
     "dialect": "mysql"
   }
 }

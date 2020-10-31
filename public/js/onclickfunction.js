@@ -17,8 +17,8 @@ $(document).ready(() => {
         }
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-        console.log('Ive been clicked');
-
+        
+        
         }
 
 

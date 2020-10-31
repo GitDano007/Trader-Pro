@@ -10,10 +10,9 @@ $(document).ready(() => {
 
         $.get(`/api/All_stock/${drop}`, function (req, res)
         {
-            console.log(drop, "my response");
+            
 
         }).then(function(data) {
-            console.log('fsdfsd', data);
             const stock = {
                 short_name: data.short_name,
                 stock_symbol: data.stock_symbol,
